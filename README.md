@@ -19,3 +19,27 @@ Rebaz is a collaborative travel planning and itinerary organizer web app.
 - Conflict detection
 - Expense tracking
 - Offline export capability
+
+## Development
+
+The app is a pnpm + Turborepo monorepo with Next.js and shadcn/ui (Radix base, RTL-ready).
+
+- `apps/web` is the Next.js app
+- `packages/ui` holds the shared shadcn/ui components, styles and utilities (`@workspace/ui`)
+- `packages/eslint-config` and `packages/typescript-config` hold the shared configs
+
+```bash
+pnpm install      # install dependencies (Node >= 20.9)
+pnpm dev          # start the dev server
+pnpm build        # production build
+pnpm lint         # lint all packages
+pnpm typecheck    # type-check all packages
+```
+
+To add a shadcn component (it goes into `packages/ui/src/components`):
+
+```bash
+pnpm dlx shadcn@latest add <component> -c apps/web
+```
+
+Then import it with `import { Button } from "@workspace/ui/components/button"`.
